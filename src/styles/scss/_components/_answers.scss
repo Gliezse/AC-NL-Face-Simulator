@@ -1,0 +1,60 @@
+.answers-container {
+    background-color: rgba(0, 0, 0, 0.726);
+    width: max-content; 
+    height: max-content;
+    padding: 3em 13em;
+    border: 1em solid rgb(249, 238, 111); 
+    border-radius: 8em;
+    box-shadow: 0 0 0 1.5em rgb(255, 255, 255), 2em 2em 0 3px rgb(252, 177, 116),;
+}
+
+.answer {
+    cursor: pointer;
+    position: relative;
+    width: max-content;
+    margin-bottom: 2em;
+
+    span {
+        font-family: "Humming", sans-serif; 
+        color: white;
+        font-size: 4em;
+        text-shadow: black .1em .1em;
+
+        -webkit-user-select: none; /* Safari */        
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* IE10+/Edge */
+        user-select: none; /* Standard */
+    }
+
+    .underline {
+        background-color: rgb(242, 173, 48);
+        height: .8em;
+        border-radius: 2em;
+        margin-top: -1.5em;
+    }
+
+    &:hover:not(.not-selectable), &.selected {
+        span {
+            color: rgb(242, 173, 48);
+        }
+
+        &::after {
+            //content: url('../assets/img/arrow.png');
+            content: " ";
+            background-image: url("../assets/img/arrow.png");
+            display: block;
+            position: absolute;
+            top: .9em;
+            left: -8em;
+            -webkit-filter: drop-shadow(5px 5px 5px #222);
+            filter: drop-shadow(5px 5px 0px #000);
+            height: 6em;
+            width: 4.6em;
+            background-size: cover;
+        }
+    }
+
+    &:last-child {
+        margin-bottom: 1em;
+    }     
+}

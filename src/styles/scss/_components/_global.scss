@@ -1,0 +1,33 @@
+@font-face {
+  font-family: 'Humming';
+  src: local('Humming'), url(../assets/fonts/Humming.otf) format('opentype');
+}
+
+body {
+    margin: 0;
+}
+.App {
+    background-image: url("../assets/img/selectionBackground.jpg");
+    height: 100vh;
+    width: 100vw;
+    background-size: 40%;
+    animation: animate-background 20s linear infinite;
+}
+
+@keyframes animate-background {
+    from { 
+        background-position-x: 0%;
+        background-position-y: 0%;
+    }
+    to { 
+        background-position-x: -100%;
+        background-position-y: -65%; 
+    }
+}
+
+.main-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
