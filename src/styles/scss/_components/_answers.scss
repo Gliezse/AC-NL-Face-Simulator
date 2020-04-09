@@ -56,5 +56,27 @@
 
     &:last-child {
         margin-bottom: 1em;
-    }     
+    }
+    
+    &.selected {
+        span {
+            animation: select-answer linear .5s;
+            color: rgb(97, 189, 33);
+        }
+
+        &::after {
+            background-image: url("../assets/img/arrow-selected.png");
+            /*filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);*/
+        }
+    }
+
+    @keyframes select-answer {
+        from {
+            color: rgb(228, 236, 170);
+        }
+
+        to {
+            color: rgb(97, 189, 33);
+        }
+    }
 }

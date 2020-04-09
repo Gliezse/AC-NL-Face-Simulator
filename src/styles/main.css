@@ -86,3 +86,19 @@ body {
 .answer:last-child {
   margin-bottom: 1em;
 }
+.answer.selected span {
+  animation: select-answer linear 0.5s;
+  color: #61bd21;
+}
+.answer.selected::after {
+  background-image: url("../assets/img/arrow-selected.png");
+  /*filter: invert(48%) sepia(13%) saturate(3207%) hue-rotate(130deg) brightness(95%) contrast(80%);*/
+}
+@keyframes select-answer {
+  from {
+    color: #e4ecaa;
+  }
+  to {
+    color: #61bd21;
+  }
+}

@@ -19,8 +19,6 @@ class Answer extends Component {
     render() {
         const { text, selected, selectable } = this.props;
 
-        console.log(selected)
-
         return(
             <div className={`answer ${!selectable ? "not-selectable" : ""} ${selected ? "selected" : ""}`} onClick={this.handleClick}>
                 <span>{text}</span>

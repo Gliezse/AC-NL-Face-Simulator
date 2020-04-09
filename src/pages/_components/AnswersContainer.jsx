@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Answer from "pages/_components/Answer";
+import { connect } from "react-redux";
+import { selectors, actions } from "reducers/game";
 
 class AnswersContainer extends Component {
     state = {
@@ -7,11 +9,13 @@ class AnswersContainer extends Component {
     }
 
     optionSelectHandler = (selectedAnswer) => {
+        const { selectOption } = this.props;
         this.setState({ selectedAnswer });
+        selectOption(selectedAnswer);
     }
 
     render() {
-        const { answers } = this.props;
+        const { answers, currentQuestion } = this.props;
         const { selectedAnswer } = this.state; 
 
         return (
@@ -31,4 +35,12 @@ class AnswersContainer extends Component {
     }
 }
 
-export default AnswersContainer;
+const mapStateToProps = (state) => ({
+    currentQuestion: selectors.getCurrentQuestion(state),
+})
+
+const mapDispatchToProps = (dispatch) => ({
+    selectOption: (optionID) => dispatch(actions.chooseOption(optionID)),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(AnswersContainer);
