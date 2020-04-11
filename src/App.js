@@ -6,6 +6,7 @@ function App() {
   return (
     <div className="App">
       <MainPage />
+      <span className="version">{process.env.REACT_APP_VERSION}</span>
     </div>
   );
 }

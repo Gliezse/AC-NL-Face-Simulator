@@ -31,3 +31,12 @@ body {
     align-items: center;
     height: 100%;
 }
+
+.version {
+    position: absolute;
+    bottom: 0;
+    right: .5em;
+    -moz-user-select: none;
+    user-select: none;
+    -webkit-user-select: none;
+}
