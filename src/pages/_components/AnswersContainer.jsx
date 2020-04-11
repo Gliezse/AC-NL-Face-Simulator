@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import Answer from "pages/_components/Answer";
 import { connect } from "react-redux";
-import { selectors, actions } from "reducers/game";
+import { actions } from "reducers/game";
 
 class AnswersContainer extends Component {
     state = {
         selectedAnswer: null,
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.answers !== this.props.answers){
+            this.setState({ selectedAnswer: null })
+        }
     }
 
     optionSelectHandler = (selectedAnswer) => {
@@ -15,17 +21,18 @@ class AnswersContainer extends Component {
     }
 
     render() {
-        const { answers, currentQuestion } = this.props;
+        const { answers } = this.props;
         const { selectedAnswer } = this.state; 
+        console.log(answers)
 
         return (
             <div className="answers-container">
-                { answers.map( (answer, index) => (
+                { answers.map( ({id, value}, index) => (
                     <Answer 
-                        key={answer.slice(0,1) + index} 
-                        value={index} 
-                        text={answer} 
-                        selected={index === selectedAnswer} 
+                        key={id} 
+                        value={id} 
+                        text={value} 
+                        selected={id === selectedAnswer} 
                         selectable={selectedAnswer === null}
                         selectedAnswerHandler={this.optionSelectHandler}    
                     />
@@ -35,12 +42,8 @@ class AnswersContainer extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    currentQuestion: selectors.getCurrentQuestion(state),
-})
-
 const mapDispatchToProps = (dispatch) => ({
     selectOption: (optionID) => dispatch(actions.chooseOption(optionID)),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnswersContainer);
+export default connect(null, mapDispatchToProps)(AnswersContainer);

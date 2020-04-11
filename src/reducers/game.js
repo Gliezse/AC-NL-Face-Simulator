@@ -1,17 +1,23 @@
 export const types = {
+    INIT_QUESTIONS: "game/INIT_QUESTIONS",
+    SET_QUESTION: "game/SET_QUESTIONS",
     CHOOSE_OPTION: "game/CHOOSE_OPTION",
 }
 
 const INITIAL_STATE = {
-    currentQuestion: 0,
+    question: {},
 }
 
 export default (state = INITIAL_STATE, action = {}) => {
     switch(action.type) {
+        case types.SET_QUESTION:
+            return {
+                ...state,
+                question: action.question,
+            }
         case types.CHOOSE_OPTION:
             return {
                 ...state,
-                currentQuestion: state.currentQuestion + 1,
             }
         default:
             return state;
@@ -19,12 +25,19 @@ export default (state = INITIAL_STATE, action = {}) => {
 }
 
 export const actions = {
-    chooseOption: (optionIndex) => ({
+    init: () => ({
+        type: types.INIT_QUESTIONS,
+    }),
+    setQuestions: (question) => ({
+        type: types.SET_QUESTION,
+        question,
+    }),
+    chooseOption: (optionID) => ({
         type: types.CHOOSE_OPTION,
-        optionIndex,
+        optionID,
     })
 }
 
 export const selectors = {
-    getCurrentQuestion: ({ game }) => game.currentQuestion, 
+    getCurrentQuestion: ({ game }) => game.question, 
 }

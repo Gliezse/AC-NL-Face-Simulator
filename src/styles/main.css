@@ -4,6 +4,7 @@
 }
 body {
   margin: 0;
+  font-family: "Humming", sans-serif;
 }
 
 .App {
@@ -39,6 +40,20 @@ body {
   -webkit-user-select: none;
 }
 
+.question {
+  position: absolute;
+  width: 100%;
+  top: 1em;
+  display: flex;
+  justify-content: center;
+}
+.question span {
+  font-size: 3em;
+  -webkit-user-select: none;
+          user-select: none;
+  -moz-user-select: none;
+}
+
 .answers-container {
   background-color: rgba(0, 0, 0, 0.726);
   width: -webkit-max-content;
@@ -59,7 +74,6 @@ body {
   margin-bottom: 2em;
 }
 .answer span {
-  font-family: "Humming", sans-serif;
   color: white;
   font-size: 4em;
   text-shadow: black 0.1em 0.1em;
